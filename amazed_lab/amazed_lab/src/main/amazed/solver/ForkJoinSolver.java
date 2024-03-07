@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
  */
 public class ForkJoinSolver extends SequentialSolver {
 
-    private static boolean found = false;
+    private volatile static boolean found = false;
     private int player;
 
     /**
@@ -92,6 +92,7 @@ public class ForkJoinSolver extends SequentialSolver {
                 continue;
             }
             maze.move(player, currentNode);
+            
 
             if (maze.hasGoal(currentNode)) {
                 found = true;
